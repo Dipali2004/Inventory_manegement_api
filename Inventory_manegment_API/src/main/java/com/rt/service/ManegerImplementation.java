@@ -48,12 +48,7 @@ public class ManegerImplementation<GetAllManeger> implements ManegerInterface {
 		List<GetAllManegerDTO> dtoList = new ArrayList<>();
 		for (Maneger manger : allManager) {
 			GetAllManegerDTO dto = manegerMapper.toDtoGet(manger);
-			System.out.println(dto.getFullName());
-			System.out.println(dto.getEmail());
-			System.out.println(dto.getPhone());
-			System.out.println(dto.getPassword());
-			System.out.println(dto.getRole());
-			System.out.println(dto.getAddress());
+			
 
 			dtoList.add(dto);
 		}
@@ -70,7 +65,7 @@ public class ManegerImplementation<GetAllManeger> implements ManegerInterface {
 			GetAllManegerDTO data = manegerMapper.toDtoGet(maneger);
 
 			return data;
-		}
+		}	
 		return null;
 
 	}
