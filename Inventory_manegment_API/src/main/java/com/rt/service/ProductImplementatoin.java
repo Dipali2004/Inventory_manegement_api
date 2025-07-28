@@ -99,8 +99,6 @@ public class ProductImplementatoin implements ProductInterface {
 			    existing.setReorderLevel(productDTO.getReorderLevel());
 			    existing.setPricePerUnit(productDTO.getPricePerUnit());
 
-			    // ❌ Do not touch supplier
-
 			    Product updated = productRepo.save(existing);
 
 			    return productMapper.toDto(updated);

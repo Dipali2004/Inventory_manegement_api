@@ -1,18 +1,19 @@
 	package com.rt.entity;
 	
 	import javax.persistence.*;
-	
-	import lombok.Getter;
+
+import lombok.Data;
+import lombok.Getter;
 	import lombok.Setter;
 	
-	@Setter
-	@Getter
+	@Data
 	@Entity
 	@Table(name = "Product", uniqueConstraints = @UniqueConstraint(columnNames = { "productName", "supplierId" }))
 	public class Product {
 	
 		@Id
 		@GeneratedValue(strategy = GenerationType.IDENTITY)
+		@Column(name="productId")
 		private int productId;
 	
 		private String productName;

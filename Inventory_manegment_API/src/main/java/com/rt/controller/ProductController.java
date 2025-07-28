@@ -1,6 +1,8 @@
+
 package com.rt.controller;
 
 import java.util.List;
+
 
 import javax.servlet.http.HttpSession;
 
@@ -14,14 +16,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.rt.DTO.ProductDTO;
 import com.rt.DTO.ProductRespDto;
-import com.rt.DTO.ProductUpdate;
 import com.rt.DTO.SupplierRespDTO;
-import com.rt.entity.Supplier;
 import com.rt.serviceInterfase.ProductInterface;
 
 @RequestMapping("/product")
@@ -39,9 +38,6 @@ public class ProductController {
 	public ProductRespDto addProduct(@Valid @RequestBody ProductDTO productDTO, BindingResult result, Model model,
 			HttpSession session) {
 
-		System.out.println("############" + productDTO);
-//		System.out.println("Received Supplier ID: " + productDTO.getSupplier().getSupplierId());
-
 		return productInterface.addProduct(productDTO);
 
 	}
@@ -56,10 +52,11 @@ public class ProductController {
 		return productInterface.update(id);
 
 	}
+
 	@PostMapping("/updateform")
 	public void updateForm(@RequestBody ProductDTO productDTO) {
-		
-		productInterface.updateForm(productDTO );
-		
+
+		productInterface.updateForm(productDTO);
+
 	}
 }

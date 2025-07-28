@@ -35,6 +35,7 @@ public class SupplierMapper {
                 supplier.getAddress(),
                 productDTOs,
                 supplier.getUser()
+                
         );
     }
 

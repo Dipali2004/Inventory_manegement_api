@@ -5,7 +5,7 @@ import java.util.List;
 import com.rt.DTO.SupplierDTO;
 import com.rt.DTO.SupplierRespDTO;
 
-public interface SupplierInterfase {
+public interface SupplierInterface {
 
 	SupplierRespDTO add(SupplierDTO supplierDTO);
 

@@ -12,10 +12,10 @@ import com.rt.DTO.SupplierRespDTO;
 import com.rt.entity.Supplier;
 import com.rt.mapper.SupplierMapper;
 import com.rt.repository.SupplierRepo;
-import com.rt.serviceInterfase.SupplierInterfase;
+import com.rt.serviceInterfase.SupplierInterface;
 
 @Service
-public class SupplierImp implements SupplierInterfase {
+public class SupplierImp implements SupplierInterface {
 	@Autowired
 	private SupplierRepo supplierRepo;
 
@@ -55,6 +55,7 @@ public class SupplierImp implements SupplierInterfase {
 		}
 		return null;
 	}
+	
 	@Override
 	public SupplierRespDTO updateForm(SupplierDTO supplierDTO) {
 	Supplier  update = supplierMapper.toEntity(supplierDTO);
