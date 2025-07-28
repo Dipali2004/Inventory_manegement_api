@@ -19,4 +19,5 @@ public class SupplierRespDTO {
 	 @JsonIgnore 
 	private List<ProductRespDto> products;
 	private String user;
+	
 }

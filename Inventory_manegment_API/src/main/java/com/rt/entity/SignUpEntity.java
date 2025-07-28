@@ -23,6 +23,7 @@ import lombok.Setter;
 public class SignUpEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id")
 	private int id ;
 	
 	@Column(name="fullName")

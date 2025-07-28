@@ -15,36 +15,37 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.rt.DTO.SupplierDTO;
 import com.rt.DTO.SupplierRespDTO;
-import com.rt.serviceInterfase.SupplierInterfase;
+import com.rt.serviceInterfase.SupplierInterface;
 
 @RestController
 @RequestMapping("/api1")
 
 public class SupplierController {
 	@Autowired
-	private SupplierInterfase supplierInterfase;
+	private SupplierInterface supplierInterface;
 
 	@PostMapping("/add")
 	public SupplierRespDTO add(@RequestBody SupplierDTO supplierDTO, HttpSession session, Model model) {
-		SupplierRespDTO data = supplierInterfase.add(supplierDTO);
+		SupplierRespDTO data = supplierInterface.add(supplierDTO);
 		return data;
 
 	}
 
 	@GetMapping("/get")
 	public List<SupplierRespDTO> getAll() {
-		return supplierInterfase.getAll();
+		
+		return supplierInterface.getAll();
 	}
 
 	@GetMapping("/update/{id}")
 	public Object GetAll(@PathVariable int id) {
-		return supplierInterfase.GetAll(id);
+		return supplierInterface.GetAll(id);
 
 	}
 
 	@PostMapping("/updateForm")
 	public SupplierRespDTO updateForm(@RequestBody SupplierDTO supplierDTO) {
-		SupplierRespDTO data = supplierInterfase.updateForm(supplierDTO);
+		SupplierRespDTO data = supplierInterface.updateForm(supplierDTO);
 		System.out.println(data.getSupplierId());
 
 		return data;

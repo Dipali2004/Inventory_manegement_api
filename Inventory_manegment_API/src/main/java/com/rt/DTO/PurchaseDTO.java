@@ -1,6 +1,7 @@
 package com.rt.DTO;
 
-import java.util.List;
+import java.time.LocalDate;
+
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,14 +10,15 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class SupplierDTO {
+public class PurchaseDTO {
+
+	private int purchaseId;
+
+	private int productId;
 
 	private int supplierId;
-	private String name;
-	private String contactInfo;
-	private String address;
-	private List<ProductDTO> products;
 
-	private String User;
+	private int quantityPurchased;
 
+	private LocalDate purchaseDate;
 }
