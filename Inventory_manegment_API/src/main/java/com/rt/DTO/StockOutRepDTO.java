@@ -18,4 +18,15 @@ public class StockOutRepDTO {
 	    private String createdByName;
 	    private int createdBy; 
 
+	    public StockOutRepDTO(int stockOutId, Integer quantitySold, LocalDateTime saleDate,
+                String customerName, int productId, String productName, int createdById) {
+this.stockOutId = stockOutId;
+this.quantitySold = quantitySold;
+this.saleDate = saleDate;
+this.customerName = customerName;
+this.productId = productId;
+this.productName = productName;
+this.createdBy = createdById;
+}
+
 }

@@ -1,11 +1,14 @@
 package com.rt.service;
 
 import java.util.ArrayList;
+
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.rt.DTO.ProductDTO;
 import com.rt.DTO.ProductRespDto;
@@ -18,6 +21,8 @@ import com.rt.mapper.SupplierMapper;
 import com.rt.repository.ProductRepo;
 import com.rt.repository.SupplierRepo;
 import com.rt.serviceInterfase.ProductInterface;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 @Service
 public class ProductImplementatoin implements ProductInterface {
 
@@ -59,19 +64,19 @@ public class ProductImplementatoin implements ProductInterface {
 
 	}
 
-	@Override
-	public List<ProductRespDto> getall() {
-		List<Product> getAll = productRepo.findAll();
-
-		List<ProductRespDto> dto = new ArrayList<>();
-		for (Product product : getAll) {
-			ProductRespDto data = productMapper.toDto(product);
-			System.out.println(data);
-			dto.add(data);
-		}
-		return dto;
-	}
-
+//	@Override
+//	public List<ProductRespDto> getall(int page, int size) {
+//	    Pageable pageable = PageRequest.of(page, size);
+//	    Page<Product> pageResult = productRepo.findAll(pageable); // <-- Page<Product>
+//
+//	    List<ProductRespDto> dto = new ArrayList<>();
+//	    for (Product product : pageResult.getContent()) { // <-- use getContent()
+//	        ProductRespDto data = productMapper.toDto(product);
+//	        System.out.println(data);
+//	        dto.add(data);
+//	    }
+//	    return dto;
+//	}
 	@Override
 	public Object update(int id) {
 		Optional<Product> product = productRepo.findById(id);
@@ -110,5 +115,24 @@ public class ProductImplementatoin implements ProductInterface {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public Page<ProductRespDto> getall(int page, int size) {
+		  Pageable pageable = PageRequest.of(page, size);  // page is 0-indexed
+	        Page<Product> pageResult = productRepo.findAll(pageable);
+
+	        // Convert Page<Product> → Page<ProductRespDto>
+	        return pageResult.map(product -> productMapper.toDto(product));
+	}
+
+	@Override
+	public String softDelete(int id) {
+		 Product product = productRepo.findById(id).orElseThrow(() -> new RuntimeException("Product not found"));
+	        product.setStatus("INACTIVE");
+	        productRepo.save(product);
+	        return "Product with ID " + id + " marked as INACTIVE";
+	}
+
+
 
 }

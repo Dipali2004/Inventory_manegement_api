@@ -2,6 +2,8 @@ package com.rt.serviceInterfase;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+
 import com.rt.DTO.ProductRespDto;
 import com.rt.DTO.PurchaseDTO;
 import com.rt.DTO.PurchaseRespDto;
@@ -15,7 +17,7 @@ public interface PurcheseInterface {
 
 	List<ProductRespDto> product();
 
-	List<PurchaseRespDto> getData();
+	Page<PurchaseRespDto> getData(int page, int size);
 
 	Object getDataID(int id);
 

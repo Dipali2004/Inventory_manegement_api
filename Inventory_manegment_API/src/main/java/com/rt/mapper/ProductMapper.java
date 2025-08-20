@@ -3,6 +3,7 @@ package com.rt.mapper;
 import org.springframework.stereotype.Component;
 
 import com.rt.DTO.ProductDTO;
+import com.rt.DTO.ProductReoprtDTO;
 import com.rt.DTO.ProductRespDto;
 import com.rt.DTO.ProductUpdate;
 import com.rt.entity.Product;
@@ -66,5 +67,21 @@ public class ProductMapper {
 		// supplier not included here
 		return dto;
 	}
+	
+	public ProductReoprtDTO toReportDto(Product product) {
+	    String status = product.getQuantityInStock() < product.getReorderLevel()
+	            ? "Low Stock"
+	            : "OK";
+
+	    return new ProductReoprtDTO(
+	            product.getProductId(),
+	            product.getProductName(),
+	            product.getCategory(),
+	            product.getQuantityInStock(),
+	            product.getReorderLevel(),
+	            status
+	    );
+	}
+
 
 }

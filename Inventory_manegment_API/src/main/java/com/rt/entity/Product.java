@@ -31,6 +31,18 @@ import lombok.Getter;
 		private Supplier supplier;
 		
 		private String User;
+		
+		  private String status; // ACTIVE / INACTIVE
+
+		    // getter setter
+		    public void setStatus(String status) {
+		        this.status = status;
+		    }
+
+		    public String getStatus() {
+		        return status;
+		    }
+		}
 	
 		// Getters and Setters
-	}
+	

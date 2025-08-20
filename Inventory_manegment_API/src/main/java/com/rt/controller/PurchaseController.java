@@ -3,12 +3,14 @@ package com.rt.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.rt.DTO.ProductRespDto;
@@ -41,9 +43,13 @@ public class PurchaseController {
 	}
 
 	@GetMapping("/getallPurchase")
-	public List<PurchaseRespDto> getData() {
-		return purcheseInterface.getData();
-	}
+	 public Page<PurchaseRespDto> getData(
+	            @RequestParam(defaultValue = "0") int page,
+	            @RequestParam(defaultValue = "4") int size) {
+
+	        // call service layer to fetch paginated data
+	        return purcheseInterface.getData(page, size);
+	    }
 	@GetMapping("/getFormId/{id}")
 	public Object getDataID(@PathVariable int id) {
 	return	purcheseInterface.getDataID(id);

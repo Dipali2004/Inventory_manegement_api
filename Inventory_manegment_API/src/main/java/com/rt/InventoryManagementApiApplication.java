@@ -2,8 +2,10 @@ package com.rt;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
 
-@SpringBootApplication(scanBasePackages = "com.rt")
+@SpringBootApplication
+@ComponentScan("com.rt")
 public class InventoryManagementApiApplication {
 
     public static void main(String[] args) {
